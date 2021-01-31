@@ -1,0 +1,25 @@
+{
+    "name": "data-interaction-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "migrate": "npx prisma migrate save --name migration --experimental && npx prisma migrate up --experimental",
+        "migrate-up": "npx prisma migrate up --experimental",
+        "prisma-client": "npx prisma generate",
+        "start": "nodemon index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@hapi/hapi": "^20.1.0",
+        "@hapi/inert": "^6.0.3",
+        "@hapi/vision": "^6.0.1",
+        "@prisma/client": "^2.15.0",
+        "hapi-swagger": "^14.1.0"
+    },
+    "devDependencies": {
+        "@prisma/cli": "^2.15.0"
+    }
+}
