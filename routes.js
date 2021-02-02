@@ -5,7 +5,7 @@ module.exports = [{
         path: '/api/news',
         options: {
             handler: async(request, response) => {
-                const news = await prisma.news.findMany();
+                const news = await prisma.News.findMany();
                 console.log({ news })
                     // get this from database
                 return [{ "id": 10, "value": 10, "name": "nosherwan testing" }, { "id": 11, "value": 6, "name": "abcd" }, { "id": 12, "value": 5, "name": "3443" }, { "id": 13, "value": 2, "name": "asdasdasdasd" }];
@@ -26,7 +26,6 @@ module.exports = [{
 
             tags: ['api'],
         }
-
     },
     {
         method: 'GET',

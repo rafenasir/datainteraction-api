@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgres"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model News {
+id    String  @id @default(uuid())
+title String
+body String
+created DateTime    @default(now())
+modified DateTime    @default(now())
+
+}
