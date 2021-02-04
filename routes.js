@@ -21,9 +21,15 @@ module.exports = [{
         method: 'GET',
         path: '/api/about_us',
         options: {
-            handler: (request, response) => {
+            handler: async(req, resp) => {
+                try {
+                    const aboutUs = await prisma.about.findMany();
+                    return resp.response(aboutUs);
+                } catch (e) {
+                    console.log(e);
+                    throw new Error(e);
+                }
                 // get this from database
-                return { title: "about us", body: "this is about us page" };
             },
 
             tags: ['api'],
@@ -32,10 +38,14 @@ module.exports = [{
     {
         method: 'GET',
         path: '/api/contact_us',
-        handler: (request, response) => {
-            // get this from database
-            return { title: "contact us", body: "this is contact us page" };
-        }
+        options: {
+            handler: (request, response) => {
+                // get this from database
+                return { title: "contact us", body: "this is contact us page" };
+            },
+            tags: ['api'],
+
+        },
     },
     {
         method: 'POST',
@@ -64,25 +74,33 @@ module.exports = [{
                 }).label("disconnectUserLocation"),
             },
 
-        }
+        },
     },
     {
         method: 'POST',
         path: '/api/contact_us',
-        handler: (request, response) => {
-            const postresponse = request.body
-            console.log({ postresponse });
-            return postresponse;
+        options: {
+            handler: (request, response) => {
+                const postresponse = request.body
+                console.log({ postresponse });
+                return postresponse;
+            },
+            tags: ['api'],
         }
+
     },
 
     {
         method: 'POST',
         path: '/api/about_us',
-        handler: (request, response) => {
-            const postresponse = request.body
-            console.log(postresponse);
-            return postresponse;
+        options: {
+            handler: (request, response) => {
+                const postresponse = request.body
+                console.log(postresponse);
+                return postresponse;
+            },
+            tags: ['api'],
+
         }
     },
 
@@ -96,20 +114,26 @@ module.exports = [{
 
                 //save this post body into db and return it
                 return postbody
-            }
+            },
+            tags: ['api'],
+
         }
 
 
     },
+
     {
         method: 'DELETE',
         path: '/api/news',
-        handler: (reequest, h) => {
-            //get this from data base.
-            const postbody = request.body;
+        options: {
+            handler: (reequest, h) => {
+                //get this from data base.
+                const postbody = request.body;
 
-            //save this post body into db and return it
-            return postbody
-        }
+                //save this post body into db and return it
+                return postbody
+            },
+            tags: ['api'],
+        },
     },
 ]
