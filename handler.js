@@ -1,5 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+
+
 async function postNews(req, resp) {
     // get this from database
     const data = req.payload;
