@@ -114,7 +114,7 @@ module.exports = [{
 
     {
         method: 'POST',
-        path: '/api/about-us',
+        path: '/api/about_us',
         options: {
             handler: handler.postAboutUs,
             tags: ['api'],
@@ -147,7 +147,7 @@ module.exports = [{
 
     {
         method: 'POST',
-        path: '/api/contact-us',
+        path: '/api/contact_us',
         options: {
             handler: handler.postContactUs,
             tags: ['api'],
