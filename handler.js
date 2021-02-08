@@ -67,9 +67,26 @@ async function postAboutUs(req, resp) {
     }
 }
 
+async function postContactUs(req, resp) {
+    // get this from database
+    const data = req.payload;
+    console.log({ data });
+
+    // save post body into db and return it
+    try {
+        const contact = await prisma.contactUs.create({ data });
+        return resp.response(data)
+
+    } catch (e) {
+        console.log(e);
+        throw new Error(e)
+    }
+}
+
 module.exports = {
     postNews,
     putNews,
     deleteNews,
-    postAboutUs
+    postAboutUs,
+    postContactUs
 }

@@ -100,19 +100,39 @@ module.exports = [{
         }
 
     },
+
+    {
+        method: 'GET',
+        path: '/api/contact_us',
+        options: {
+            handler: async(req, resp) => {
+                try {
+                    const contactUs = await prisma.contactUs.findMany();
+                    return resp.response(contactUs);
+                } catch (e) {
+                    console.log(e);
+                    throw new Error(e);
+                }
+            },
+            tags: ["api"],
+        }
+    },
+
+    {
+        method: 'POST',
+        path: '/api/contact-us',
+        options: {
+            handler: handler.postContactUs,
+            tags: ['api'],
+
+            validate: {
+                payload: Joi.object({
+                    title: Joi.string().required(),
+                    body: Joi.string().required(),
+                }).label("postContactUs"),
+            },
+        }
+
+    },
+
 ]
-
-
-// {
-//     method: 'POST',
-//     path: '/api/about_us',
-//     options: {
-//         handler: (request, response) => {
-//             const postresponse = request.body
-//             console.log(postresponse);
-//             return postresponse;
-//         },
-//         tags: ['api'],
-
-//     }
-// },
