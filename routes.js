@@ -154,8 +154,9 @@ module.exports = [{
 
             validate: {
                 payload: Joi.object({
-                    title: Joi.string().required(),
-                    body: Joi.string().required(),
+                    phone: Joi.number().required(),
+                    email: Joi.string().required(),
+                    address: Joi.string().required(),
                 }).label("postContactUs"),
             },
         }
