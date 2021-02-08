@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgres"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -18,17 +18,16 @@ model News {
   modified DateTime    @default(now())
 
 }
-
- 
-model AboutUS {
+model Pages {
   id    String  @id @default(uuid())
+  page_name String
   title String
   body String
   created DateTime    @default(now())
   modified DateTime    @default(now())
 }
 
-model ContactUs {
+model AboutUS {
   id    String  @id @default(uuid())
   title String
   body String

@@ -73,7 +73,7 @@ module.exports = [{
         options: {
             handler: async(req, resp) => {
                 try {
-                    const aboutUs = await prisma.pages.findMany();
+                    const aboutUs = await prisma.aboutUS.findMany();
                     return resp.response(aboutUs);
                 } catch (e) {
                     console.log(e);
@@ -83,51 +83,25 @@ module.exports = [{
             tags: ["api"],
         }
     },
+
+    {
+        method: 'POST',
+        path: '/api/about-us',
+        options: {
+            handler: handler.postAboutUs,
+            tags: ['api'],
+
+            validate: {
+                payload: Joi.object({
+                    title: Joi.string().required(),
+                    body: Joi.string().required(),
+                }).label("postAboutUs"),
+            },
+        }
+
+    },
 ]
 
-//         tags: ['api'],
-//     }
-// },
-
-
-//         tags: ["api"],
-
-//         validate: {
-//             payload: Joi.object({
-//                 title: Joi.string().required(),
-//                 body: Joi.string().required(),
-//             }).label("disconnectUserLocation"),
-//         },
-
-// {
-//     method: 'GET',
-//     path: '/api/contact_us',
-//     options: {
-//         handler: (request, response) => {
-//             // get this from database
-//             return { title: "contact us", body: "this is contact us page" };
-//         },
-//         tags: ['api'],
-
-//     },
-// },
-
-
-// //    },
-// //},
-// {
-//     method: 'POST',
-//     path: '/api/contact_us',
-//     options: {
-//         handler: (request, response) => {
-//             const postresponse = request.body
-//             console.log({ postresponse });
-//             return postresponse;
-//         },
-//         tags: ['api'],
-//     }
-
-// },
 
 // {
 //     method: 'POST',

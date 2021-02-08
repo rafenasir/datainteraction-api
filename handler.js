@@ -51,8 +51,25 @@ async function deleteNews(req, resp) {
     }
 }
 
+async function postAboutUs(req, resp) {
+    // get this from database
+    const data = req.payload;
+    console.log({ data });
+
+    // save post body into db and return it
+    try {
+        const news = await prisma.aboutUS.create({ data })
+        return resp.response(data)
+
+    } catch (e) {
+        console.log(e);
+        throw new Error(e)
+    }
+}
+
 module.exports = {
     postNews,
     putNews,
-    deleteNews
+    deleteNews,
+    postAboutUs
 }
