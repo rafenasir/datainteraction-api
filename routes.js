@@ -121,7 +121,6 @@ module.exports = [{
 
             validate: {
                 payload: Joi.object({
-                    title: Joi.string().required(),
                     body: Joi.string().required(),
                 }).label("postAboutUs"),
             },
