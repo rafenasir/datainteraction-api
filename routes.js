@@ -66,6 +66,34 @@ module.exports = [{
             }
         },
     },
+    { //Individual News ID
+        method: "GET",
+        path: "/api/news/{id}",
+        options: {
+            handler: async(req, resp) => {
+                try {
+                    const individualNews = await prisma.news.findOne({
+                        where: {
+                            id: req.params.id
+                        }
+                    })
+                    return resp.response(individualNews);
+                } catch (e) {
+                    console.log(e);
+                    throw new Error(e);
+                }
+            },
+            tags: ["api"],
+            validate: {
+                params: Joi.object({
+                    id: Joi.string().required(),
+                }).label("individualNews"),
+            },
+        },
+
+
+    },
+
 
     {
         method: 'GET',
