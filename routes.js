@@ -95,6 +95,7 @@ module.exports = [{
     },
 
 
+
     {
         method: 'GET',
         path: '/api/about_us',
