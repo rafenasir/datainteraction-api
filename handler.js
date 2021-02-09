@@ -58,7 +58,7 @@ async function postAboutUs(req, resp) {
 
     // save post body into db and return it
     try {
-        const news = await prisma.aboutUS.create({ data })
+        const about = await prisma.aboutUS.create({ data })
         return resp.response(data)
 
     } catch (e) {
